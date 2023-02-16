@@ -31,10 +31,13 @@ const token = jwt.sign(
 console.log("DoorDash API JWT: " + token);
 
 const crypto = require('crypto');
-const deliveryId = crypto.randomUUID();
+
+// Generate Unique ID for Delivery
+const deliveryId = crypto.randomUUID(); // TODO: Replace with generated system ID
 
 const axios = require('axios');
 
+// Create data needed to create a new delivery  
 const body = JSON.stringify({
   external_delivery_id: deliveryId,
   pickup_address: '901 Market Street 6th Floor San Francisco, CA 94103',
@@ -48,6 +51,7 @@ const body = JSON.stringify({
   order_value: 1999,
 });
 
+// Make API call, write response data with successful result, otherwise write error
 axios
   .post('https://openapi.doordash.com/drive/v2/deliveries', body, {
     headers: {
