@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const accessKey = {
   "developer_id": "UPDATE_WITH_DEVELOPER_ID", // TODO: Update value with Developer ID
   "key_id": "UPDATE_WITH_KEY_ID", // TODO: Update value with Key ID
-  "signing_secret": "UPDATE_WITH_DEVELOPER_ID" // TODO: Update value with Key ID
+  "signing_secret": "UPDATE_WITH_SIGNING_SECRET" // TODO: Update value with Signing Secret
 };
 
 // Set JWT Payload data
@@ -28,7 +28,7 @@ const token = jwt.sign(
 );
 
 // Write the DoorDash API JWT
-console.log("DoorDash API JWT: " + token);
+console.log("DoorDash API JWT: \n" + token + "\n");
 
 const crypto = require('crypto');
 
@@ -50,6 +50,8 @@ const body = JSON.stringify({
   dropoff_instructions: 'Enter gate code 1234 on the callbox.',
   order_value: 1999,
 });
+
+console.log("\n Create New Delivery Response: \n");
 
 // Make API call, write response data with successful result, otherwise write error
 axios
